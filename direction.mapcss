@@ -1,0 +1,66 @@
+meta {
+    title: "Direction for traffic signs";   /* title shown in the menu */
+    /* icon: "images/logo.png";  small icon shown in the menu next to the title */
+    version: "0.1.0";           
+    description: "very simple preset to show the “direction” tag of a highway=stop,give_way,traffic_signals";      
+    author: "Michael Maier (species@osm)";
+    /* link: "http://...";       URL to the web page of the style */
+    min-josm-version: 8000;   /* the minimum JOSM version where this style works */
+}
+
+/* zoomlevels: 
+    icons 21+ great
+   below 20 smaller icons 
+
+   ways: -19 narrow
+   20+ dick
+
+   texts 16-20 short ,
+   20- normal
+   */
+
+node[highway=~/^(give_way|stop)/]:connection::warning 
+{
+  symbol-shape: hexagon;
+  symbol-fill-color:red;
+  symbol-size:42;
+  symbol-stroke-width:4;
+  symbol-stroke-color:white;
+  z-index:-1;
+}
+area > node[highway=~/^(give_way|stop)/]:connection::warning 
+{
+  symbol-shape: none;
+}
+
+node[!direction][highway=~/^(give_way|stop)/]!:connection::randg,
+area > node[!direction][highway=~/^(give_way|stop)/]::randg
+{
+  symbol-shape: square;
+  symbol-fill-color:orange;
+  symbol-size:24;
+  z-index:-1;
+}
+way[oneway?][!cycleway] > node[!direction][highway=~/^(give_way|stop|traffic_signals)/]::randg
+{
+  symbol-shape: none;
+}
+
+node[direction][highway=~/^(give_way|stop|traffic_signals)/]::randg
+{
+  text:eval("↓");
+  font-size:20;
+  text-halo-color:black;
+  text-halo-radius:1px;
+}
+node[direction=forward][highway=~/^(give_way|stop|traffic_signals)/]::randg
+{
+  text:eval("↑");
+}
+
+node[highway=~/^(give_way|stop|traffic_signals)/]!:connection < way[highway]
+{
+  repeat-image: "https://github.com/species/josm-preset-wheelchair/raw/master/incline_up_steps.png";
+  repeat-image-spacing: 90;
+  repeat-image-width: 24;
+}
