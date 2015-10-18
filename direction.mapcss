@@ -1,7 +1,7 @@
 meta {
     title: "Direction for traffic signs";   /* title shown in the menu */
-    /* icon: "images/logo.png";  small icon shown in the menu next to the title */
-    version: "0.1.0";           
+    icon: "vehicle/restriction/right_of_way.png"; /* small icon shown in the menu next to the title */
+    version: "0.1.1";           
     description: "very simple preset to show the “direction” tag of a highway=stop,give_way,traffic_signals";      
     author: "Michael Maier (species@osm)";
     /* link: "http://...";       URL to the web page of the style */
