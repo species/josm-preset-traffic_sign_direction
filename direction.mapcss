@@ -1,7 +1,7 @@
 meta {
     title: "Direction for traffic signs";   /* title shown in the menu */
     icon: "vehicle/restriction/right_of_way.png"; /* small icon shown in the menu next to the title */
-    version: "0.1.3";           
+    version: "0.1.4";           
     description: "very simple preset to show the “direction” tag of a highway=stop,give_way,traffic_signals";      
     author: "Michael Maier (species@osm)";
     /* link: "http://...";       URL to the web page of the style */
@@ -49,17 +49,21 @@ way[oneway?][cycleway=no] > node[!direction][highway=~/^(give_way|stop|traffic_s
 
 node[direction][highway=~/^(give_way|stop|traffic_signals)/]::randg
 {
-  text:eval("↓");
+  text:eval("↓↑");
   font-size:20;
   text-halo-color:black;
   text-halo-radius:1px;
+}
+node[direction=backward][highway=~/^(give_way|stop|traffic_signals)/]::randg
+{
+  text:eval("↓");
 }
 node[direction=forward][highway=~/^(give_way|stop|traffic_signals)/]::randg
 {
   text:eval("↑");
 }
 
-node[highway=~/^(give_way|stop|traffic_signals)/]!:connection < way[highway][!oneway]
+node[highway=~/^(give_way|stop|traffic_signals)/]!:connection < way[highway][oneway!~/yes|-1/]
 {
   repeat-image: "https://github.com/species/josm-preset-wheelchair/raw/master/incline_up_steps.png";
   repeat-image-spacing: 90;
