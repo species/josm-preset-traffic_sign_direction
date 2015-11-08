@@ -1,7 +1,7 @@
 meta {
     title: "Direction for traffic signs";   /* title shown in the menu */
     icon: "vehicle/restriction/right_of_way.png"; /* small icon shown in the menu next to the title */
-    version: "0.1.4";           
+    version: "0.1.6";           
     description: "very simple preset to show the “direction” tag of a highway=stop,give_way,traffic_signals";      
     author: "Michael Maier (species@osm)";
     /* link: "http://...";       URL to the web page of the style */
@@ -47,18 +47,21 @@ way[oneway?][cycleway=no] > node[!direction][highway=~/^(give_way|stop|traffic_s
   symbol-shape: none;
 }
 
-node[direction][highway=~/^(give_way|stop|traffic_signals)/]::randg
+node[direction][highway=~/^(give_way|stop|traffic_signals)/]::randg,
+node[traffic_signals:direction][highway=~/^(give_way|stop|traffic_signals)/]::randg
 {
   text:eval("↓↑");
   font-size:20;
   text-halo-color:black;
   text-halo-radius:1px;
 }
-node[direction=backward][highway=~/^(give_way|stop|traffic_signals)/]::randg
+node[direction=backward][highway=~/^(give_way|stop|traffic_signals)/]::randg,
+node[traffic_signals:direction=backward][highway=~/^(give_way|stop|traffic_signals)/]::randg
 {
   text:eval("↓");
 }
-node[direction=forward][highway=~/^(give_way|stop|traffic_signals)/]::randg
+node[direction=forward][highway=~/^(give_way|stop|traffic_signals)/]::randg,
+node[traffic_signals:direction=forward][highway=~/^(give_way|stop|traffic_signals)/]::randg
 {
   text:eval("↑");
 }
