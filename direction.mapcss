@@ -5,6 +5,7 @@ meta {
     description: "very simple preset to show the “direction” tag of a highway=stop,give_way,traffic_signals";      
     author: "Michael Maier (species@osm)";
     /* link: "http://...";       URL to the web page of the style */
+    link: "https://github.com/species/josm-preset-traffic_sign_direction";
     min-josm-version: 8000;   /* the minimum JOSM version where this style works */
 }
 
