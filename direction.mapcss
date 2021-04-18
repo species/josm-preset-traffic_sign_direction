@@ -20,7 +20,7 @@ meta {
    20- normal
    */
 
-node[highway=~/^(give_way|stop)/]:connection::warning 
+node|z17-[highway=~/^(give_way|stop)/]:connection::warning 
 {
   symbol-shape: hexagon;
   symbol-fill-color:red;
@@ -34,8 +34,8 @@ area > node[highway=~/^(give_way|stop)/]:connection::warning
   symbol-shape: none;
 }
 
-node[!direction][highway=~/^(give_way|stop)/]!:connection::randg,
-area > node[!direction][highway=~/^(give_way|stop)/]::randg
+node|z17-[!direction][highway=~/^(give_way|stop)/]!:connection::randg,
+area > node|z17-[!direction][highway=~/^(give_way|stop)/]::randg
 {
   symbol-shape: square;
   symbol-fill-color:orange;
@@ -48,26 +48,26 @@ way[oneway?][cycleway=no] > node[!direction][highway=~/^(give_way|stop|traffic_s
   symbol-shape: none;
 }
 
-node[direction][highway=~/^(give_way|stop|traffic_signals)/]::randg,
-node[traffic_signals:direction][highway=~/^(give_way|stop|traffic_signals)/]::randg
+node|z17-[direction][highway=~/^(give_way|stop|traffic_signals)/]::randg,
+node|z17-[traffic_signals:direction][highway=~/^(give_way|stop|traffic_signals)/]::randg
 {
   text:eval("↓↑");
   font-size:20;
   text-halo-color:black;
   text-halo-radius:1px;
 }
-node[direction=backward][highway=~/^(give_way|stop|traffic_signals)/]::randg,
-node[traffic_signals:direction=backward][highway=~/^(give_way|stop|traffic_signals)/]::randg
+node|z17-[direction=backward][highway=~/^(give_way|stop|traffic_signals)/]::randg,
+node|z17-[traffic_signals:direction=backward][highway=~/^(give_way|stop|traffic_signals)/]::randg
 {
   text:eval("↓");
 }
-node[direction=forward][highway=~/^(give_way|stop|traffic_signals)/]::randg,
-node[traffic_signals:direction=forward][highway=~/^(give_way|stop|traffic_signals)/]::randg
+node|z17-[direction=forward][highway=~/^(give_way|stop|traffic_signals)/]::randg,
+node|z17-[traffic_signals:direction=forward][highway=~/^(give_way|stop|traffic_signals)/]::randg
 {
   text:eval("↑");
 }
 
-node[highway=~/^(give_way|stop|traffic_signals)/]!:connection < way[highway][oneway!~/yes|-1/]
+node|z17-[highway=~/^(give_way|stop|traffic_signals)/]!:connection < way[highway][oneway!~/yes|-1/]
 {
   repeat-image: "https://github.com/species/josm-preset-wheelchair/raw/master/incline_up_steps.png";
   repeat-image-spacing: 90;
